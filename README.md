@@ -62,7 +62,11 @@ https://nexus.company.com/service/rest/v1/components?repository="
 
 Update the following static fields in Nexus2To3Sync:
 
-
+private final String nexus2RepositoryBase; //Edit in "edit configurations"
+private final String nexus2RepositoryName; //Edit in "edit configurations"
+private final String nexus3RepositoryBase; //Edit in "edit configurations"
+private final String nexus3RepositoryName; //Edit in "edit configurations"
+private final String nexus3RestApiBase;    //Edit in "edit configurations"
 private static final String NEXUS3_USERNAME = "your-username";
 private static final String NEXUS3_PASSWORD = "your-password";
 
