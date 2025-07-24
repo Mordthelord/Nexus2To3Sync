@@ -14,7 +14,7 @@ This Java tool migrates artifacts from a Nexus 2 repository to a Nexus 3 reposit
 
 - Before continuing, switch to "code View" for the README to be able to see the "mvn exec" command.
 - Usernames, passwords, GroupID's, artifacts, versions, Packages, Paths, nexus links (for both nexus 2 and 3), File extensions, and Computer paths will ALL have to be updated with your own project information.
-- You will need a maven exec command to put in project configurations in the form of: mvn exec:java -Dexec.args="<repositoryFormat> <nexus2RepositoryBase> <nexus2RepositoryName> <nexus3RepositoryBase> <nexus3RepositoryName> <nexus3RestApiBase>"
+- You will need a maven exec command to put in project configurations in the form of: mvn exec:java -Dexec.mainClass="com.company.Nexus2To3Sync" -Dexec.args="<repositoryFormat> <nexus2RepositoryBase> <nexus2RepositoryName> <nexus3RepositoryBase> <nexus3RepositoryName> <nexus3RestApiBase>"
 - For the NexusFileComparator.java, the paths need to be configured in the code itself, no need for the mvn exec command.
 - NexusFileComparator will compare and contrast Nexus 3 files with ones already downloaded on the PC: from Nexus 2. (Probably maven local repository)
 
@@ -39,9 +39,9 @@ mvn clean compile
 
 ## Usage
 
-Since the pom.xml is preconfigured with the exec-maven-plugin, you can run:
+Since the pom.xml is not preconfigured with the exec-maven-plugin, run:
 
-mvn exec:java -Dexec.args="<repositoryFormat> <nexus2RepositoryBase> <nexus2RepositoryName> <nexus3RepositoryBase> <nexus3RepositoryName> <nexus3RestApiBase>"
+mvn exec:java -Dexec.mainClass="com.company.Nexus2To3Sync" -Dexec.args="<repositoryFormat> <nexus2RepositoryBase> <nexus2RepositoryName> <nexus3RepositoryBase> <nexus3RepositoryName> <nexus3RestApiBase>"
 
 
 ---
@@ -55,25 +55,6 @@ repository
 https://nexus.smartstartinc.com/repository/
 repository
 https://nexus.company.com/service/rest/v1/components?repository="
-
----
-
-## Required pom.xml Configuration
-
-Make sure you have this in your pom.xml:
-
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>3.1.0</version>
-      <configuration>
-        <mainClass>com.upload.Nexus2To3Sync</mainClass>
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
 
 ---
 
