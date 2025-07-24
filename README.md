@@ -15,6 +15,8 @@ This Java tool migrates artifacts from a Nexus 2 repository to a Nexus 3 reposit
 - Before continuing, switch to "code View" for the README to be able to see the "mvn exec" command.
 - Usernames, passwords, GroupID's, artifacts, versions, Packages, Paths, nexus links (for both nexus 2 and 3), File extensions, and Computer paths will ALL have to be updated with your own project information.
 - You will need a maven exec command to put in project configurations in the form of: mvn exec:java -Dexec.args="<repositoryFormat> <nexus2RepositoryBase> <nexus2RepositoryName> <nexus3RepositoryBase> <nexus3RepositoryName> <nexus3RestApiBase>"
+- For the NexusFileComparator.java, the paths need to be configured in the code itself, no need for the mvn exec command.
+- NexusFileComparator will compare and contrast Nexus 3 files with ones already downloaded on the PC: from Nexus 2. (Probably maven local repository)
 
 ## Prerequisites
 
@@ -107,6 +109,7 @@ src/main/java/com/upload/
  ├─ Uploader.java             # Interface for uploaders
  ├─ NexusUploaderMaven.java   # Maven uploader implementation
  ├─ NexusUploaderNuget.java   # NuGet uploader implementation
+ ├─ NexusFileComparator.java  # PC to Nexus 3 file compare 
 
  --- 
  
